@@ -72,9 +72,10 @@ def summarize(query, docs, giga):
     prompt = f"{SYSTEM_PROMPT}\n\nQuestion: {query}\n\nFragments:\n{chunks}"
     
     try:
-        response = giga.chat(
-            messages=[{"role": "user", "content": prompt}]
-        )
+        from gigachat.models import Chat, Messages, MessagesRole
+        response = giga.chat(Chat(
+            messages=[Messages(role=MessagesRole.USER, content=prompt)]
+        ))
         return response.choices[0].message.content
     except Exception as e:
         return f"GigaChat error: {e}"
