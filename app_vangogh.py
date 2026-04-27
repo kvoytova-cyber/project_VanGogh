@@ -53,7 +53,7 @@ def load_resources():
     )
 
     giga = GigaChat(
-        credentials=st.secrets["GIGA_KEY"],
+        credentials=st.secrets["GIGACHAT_KEY"],
         verify_ssl_certs=False
     )
     return vector_store, giga
